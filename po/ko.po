@@ -1,0 +1,106 @@
+# GOOROOM FEEDBACK CLIENT.
+# Copyright (C) 2021 Gooroom
+# Copyright (C) 2021 Gooroom
+# Gooroom <gooroom@gooroom.kr>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: gooroom-feedback-client 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-30 17:45+0900\n"
+"PO-Revision-Date: 2021-07-30 17:57+0900\n"
+"Last-Translator: Gooroom <gooroom@gooroom.kr>\n"
+"Language-Team: Gooroom <gooroom@gooroom.kr>\n"
+"Language: Korean\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: gooroom-feedback-client-dialog.c:95
+msgid ""
+"\n"
+"Internal Server Error.\n"
+msgstr ""
+"\n"
+"내부 서버 오류.\n"
+
+#: gooroom-feedback-client-dialog.c:110
+msgid ""
+"\n"
+"Please provide us more detailed information of your feedback.\n"
+msgstr ""
+"\n"
+"조금 더 자세한 정보를 제공해주세요.\n"
+
+#: gooroom-feedback-client-dialog.c:82
+msgid ""
+"\n"
+"Thanks for taking the time to give us feedback.\n"
+msgstr ""
+"\n"
+"피드백을 보내주셔서 감사합니다.\n"
+
+#: gooroom-feedback-client-window.c:49
+msgid "+ New"
+msgstr "+ 신규작성"
+
+#: gooroom-feedback-client-dialog.c:94
+msgid "FAILURE"
+msgstr "실패"
+
+#: gooroom-feedback-client-history-view.c:93
+msgid "Feedback History"
+msgstr "피드백 기록"
+
+#: gooroom-feedback-client-dialog.c:121
+msgid "Gooroom Feedback"
+msgstr "구름 피드백"
+
+#: gooroom-feedback-client-dialog.c:127
+msgid "Gooroom Feedback Writer"
+msgstr "구름 피드백 작성하기"
+
+#: gooroom-feedback-client-history-view.c:29
+msgid "Feedback Description"
+msgstr "피드백 상세내용"
+
+#: gooroom-feedback-client-dialog.c:81
+msgid "SUCCESS"
+msgstr "성공"
+
+#: gooroom-feedback-client-dialog.ui:30
+msgid "Cancel"
+msgstr "취소"
+
+#: gooroom-feedback-client-dialog.c:141
+msgid "Submit"
+msgstr "보내기"
+
+#: gooroom-feedback-client-dialog.ui:84
+msgid "Send us feedback."
+msgstr "피드백을 보내주세요."
+
+#: gooroom-feedback-client-dialog.ui:111
+msgid "Select Feedback Category."
+msgstr "피드백 종류를 선택해주세요."
+
+#: gooroom-feedback-client-dialog.ui:122
+msgid " Problem"
+msgstr " 기능 오류"
+
+#: gooroom-feedback-client-dialog.ui:139
+msgid " Suggestion"
+msgstr " 의견 제시"
+
+#: gooroom-feedback-client-dialog.ui:174
+msgid "Title"
+msgstr "제목"
+
+#: gooroom-feedback-client-dialog.ui:217
+msgid "Description"
+msgstr "상세내용"
+
+#: gooroom-feedback-client.ui:24
+msgid "Gooroom Feedback List"
+msgstr "구름 피드백 목록"

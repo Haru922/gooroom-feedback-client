@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=0.0.1
+Name=Gooroom Feedback Client
+Name[ko]=구름 피드백
+GenericName=Gooroom Feedback Client
+GenericName[ko]=구름 피드백
+Exec=/usr/bin/gooroom-feedback-client
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=gooroom-feedback-client
+Icon[ko]=구름 피드백
+Categories=System
+StartupWMClass=gooroom-feedback-client
+StartupNotify=true
