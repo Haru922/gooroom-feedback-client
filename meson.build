@@ -9,6 +9,7 @@ gtk_dep = dependency('gtk+-3.0')
 glib_dep = dependency('glib-2.0')
 gio_dep = dependency('gio-2.0')
 curl_dep = dependency('libcurl')
+json_dep = dependency('json-c')
 
 gooroom_feedback_client_sources = [
   'src/gooroom-feedback-client-application.c',
@@ -28,7 +29,7 @@ gooroom_feedback_client_sources += gnome.compile_resources(
 gooroom_feedback_client = executable(
   'gooroom-feedback-client',
   gooroom_feedback_client_sources,
-  dependencies: [gtk_dep, glib_dep, gio_dep, curl_dep],
+  dependencies: [gtk_dep, glib_dep, gio_dep, curl_dep, json_dep],
   install: true,
   install_dir: '/usr/bin'
 )

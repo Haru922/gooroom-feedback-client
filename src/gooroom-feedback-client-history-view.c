@@ -1,4 +1,6 @@
 #include "gooroom-feedback-client-history-view.h"
+#include <json-c/json_object.h>
+#include <json-c/json_tokener.h>
 
 void
 gooroom_feedback_history_view_init (GtkWidget *gfb_history_view,
@@ -48,7 +50,9 @@ gooroom_feedback_history_view_get_items (GtkWidget *gfb_history_box,
   char history[BUFSIZ];
   struct passwd *pw;
   uid_t uid;
-  gchar **segments = NULL;
+  gchar *segments[GFB_HISTORY_COLUMNS];
+  struct json_object *json_obj = NULL;
+  struct json_object *iter_obj = NULL;
 
   gfb_history_init_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
   gtk_box_pack_start (GTK_BOX (gfb_history_init_box),
@@ -71,8 +75,29 @@ gooroom_feedback_history_view_get_items (GtkWidget *gfb_history_box,
   {
     while (fgets (history, BUFSIZ, fp))
     {
-        segments = g_strsplit (history, "::", 0);
-        //segments[GFB_HISTORY_RESULT][strlen(segments[GFB_HISTORY_RESULT])-1] = '\0';
+        json_obj = json_tokener_parse (history);
+
+        if (!json_obj) continue;
+        if (!json_object_object_get_ex (json_obj, "time", &iter_obj)) {
+            json_object_put (json_obj);
+            continue;
+        }
+        segments[GFB_HISTORY_DATE] = json_object_get_string (iter_obj);
+        if (!json_object_object_get_ex (json_obj, "category", &iter_obj)) {
+            json_object_put (json_obj);
+            continue;
+        }
+        segments[GFB_HISTORY_TYPE] = json_object_get_string (iter_obj);
+        if (!json_object_object_get_ex (json_obj, "title", &iter_obj)) {
+            json_object_put (json_obj);
+            continue;
+        }
+        segments[GFB_HISTORY_TITLE] = json_object_get_string (iter_obj);
+        if (!json_object_object_get_ex (json_obj, "description", &iter_obj)) {
+            json_object_put (json_obj);
+            continue;
+        }
+        segments[GFB_HISTORY_DESCRIPTION] = json_object_get_string (iter_obj);
         gfb_history_button = gtk_button_new ();
         gtk_widget_set_name (gfb_history_button,
                              "gfb-history-button");
@@ -110,8 +135,8 @@ gooroom_feedback_history_view_get_items (GtkWidget *gfb_history_box,
         gtk_box_pack_start (GTK_BOX (gfb_history_box),
                             gfb_history_button,
                             FALSE, FALSE, 0);
-        g_strfreev (segments);
-        segments = NULL;
+        json_object_put (json_obj);
+        json_object_put (iter_obj);
     }
     fclose (fp);
   }

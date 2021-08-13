@@ -44,6 +44,7 @@ gfb_submit_button_clicked (GtkButton *widget,
   time_t temp;
   struct tm *time_ptr = NULL;
   char time_str[100] = { 0, };
+  char log_str[BUFSIZ];
 
   priv = gooroom_feedback_dialog_get_instance_private (GOOROOM_FEEDBACK_DIALOG (user_data));
 
@@ -85,12 +86,19 @@ gfb_submit_button_clicked (GtkButton *widget,
         fprintf (stderr, "fopen() Failed.\n");
         return;
       }
-      fprintf (history, "%s::%s::%s::%s::%s\n",
-               time_str,
-               title,
-               category,
-               g_strescape (description, NULL),
-               server_response);
+      snprintf (log_str, BUFSIZ,
+                "{  \"time\": \"%s\","
+                "  \"title\": \"%s\","
+                "  \"category\": \"%s\","
+                "  \"release\": \"%s\","
+                "  \"code\": \"%s\","
+                "  \"description\": \"%s\","
+                "  \"server_response\": \"%s\"  }\n",
+                time_str, title,
+                category, release,
+                code_name, g_strescape (description, NULL),
+                server_response);
+      fprintf (history, "%s", log_str);
       fclose (history);
     }
     else
